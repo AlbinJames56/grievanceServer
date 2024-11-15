@@ -11,7 +11,16 @@ const grievanceSchema = new mongoose.Schema({
   issue:{
     type:String,
     required:true
+  },
+  description:{
+    type:String,
+    required:true
   }
+  ,status:{
+    type:String,
+    required:true
+  }
+
 });
 const grievance = mongoose.model("grievance", grievanceSchema);
 module.exports = grievance;
