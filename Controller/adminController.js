@@ -2,7 +2,7 @@ const grievance = require("../Models/grievanceSchema");
 const jwt = require("jsonwebtoken");
 
 exports.getAllGrievances = async (req, res) => {
-  console.log("inside get all");
+  // console.log("inside get all");
   try {
     const allGrievances = await grievance.find();
     if (allGrievances.length > 0) {
@@ -18,15 +18,13 @@ exports.getAllGrievances = async (req, res) => {
 
 // update grievance status
 exports.updateGrievance = async (req, res) => {
-  console.log("inside update status");
-  const {_id} = req.body;
-    
-    console.log(_id,"body:", req.body);
-     
+  // console.log("inside update status " );
+  const { gid } = req.params;  
+  const { status, action,updatedDate } = req.body;   
   try {
     const updateGrievanceStatus = await grievance.findByIdAndUpdate(
-        _id,
-      req.body,
+      gid,
+      { status, action,updatedDate},
       { new: true }
     );
     if (!updateGrievanceStatus) {
@@ -37,4 +35,4 @@ exports.updateGrievance = async (req, res) => {
     console.error("Error updating grievance:", err);
     res.status(500).json({ message: "Error updating grievance", error: err });
   }
-};
+}; 

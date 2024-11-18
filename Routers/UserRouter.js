@@ -12,6 +12,6 @@ router.post("/login", userController.login);
 router.post("/addGrievance", userController.addGrievance);
 
 // fetch user grievances
-router.get("/getUserGrievance",userController.getUserGrievance)
+router.get("/getUserGrievance", userController.getUserGrievance);
 
-module.exports=router;
+module.exports = router;

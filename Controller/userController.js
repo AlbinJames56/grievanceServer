@@ -52,7 +52,7 @@ exports.addGrievance = async (req, res) => {
   const token = req.query.token;
     const decoded = jwt.verify(token, process.env.jwt_secret); // Decode token
     const userId = decoded.userId; 
-  const { name, email, issue, description, status = "pending" } = req.body;
+  const { name, email, issue, description, status = "Submitted",date} = req.body;
   try {
     const user = await users.findOne({ email });
     if (user) {
@@ -62,6 +62,7 @@ exports.addGrievance = async (req, res) => {
         issue,
         userId,
         description,
+        date,
         status,
       });
       await newGrievance.save();
@@ -79,8 +80,6 @@ exports.getUserGrievance = async (req, res) => {
   const token = req.query.token;
     const decoded = jwt.verify(token, process.env.jwt_secret); // Decode token
     const userId = decoded.userId; 
-    console.log(userId);
-    
   
   try {
     const grievances = await grievance.find({ userId });

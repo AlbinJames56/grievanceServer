@@ -27,6 +27,14 @@ const grievanceSchema = new mongoose.Schema({
   action: {
     type: String,
   },
+  date:{
+    type:Date,
+    required:true
+  },
+  updatedDate:{
+    type:Date,
+    
+  }
 });
 const grievance = mongoose.model("grievance", grievanceSchema);
 module.exports = grievance;
