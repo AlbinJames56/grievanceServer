@@ -79,7 +79,7 @@ exports.addGrievance = async (req, res) => {
 exports.getUserGrievance = async (req, res) => {
   const token = req.query.token;
     const decoded = jwt.verify(token, process.env.jwt_secret); // Decode token
-    const userId = decoded.userId; 
+    const userId = decoded.userId;
   
   try {
     const grievances = await grievance.find({ userId });

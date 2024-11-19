@@ -9,5 +9,5 @@ const adminSchema = new mongoose.Schema({
     required: true,
   },
 });
-const admin = mongoose.model("admin", adminSchema);
-module.exports = admin;
+const SuperHero = mongoose.model("admin", adminSchema);
+module.exports = SuperHero;

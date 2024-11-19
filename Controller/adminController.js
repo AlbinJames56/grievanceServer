@@ -1,6 +1,50 @@
+const SuperHero = require("../Models/adminSchema");
 const grievance = require("../Models/grievanceSchema");
 const jwt = require("jsonwebtoken");
 
+// register SuperHero
+exports.registerSuperHero=async(req,res)=>{ 
+  const { username,   password } = req.body;
+  try {
+    const existingSuperHero = await SuperHero.findOne({ username});
+     
+    if (existingSuperHero) {
+      res.status(406).json("User Already Exists.. Please login..");
+    } else {
+      const newSuperHero = new SuperHero({
+        username, 
+        password,
+      });
+      await newSuperHero.save();
+      res.status(200).json(newSuperHero);
+    }
+  } catch (err) {
+    res.status(401).json(err);
+  }
+}
+// login SuperHero
+exports.loginSuperHero=async(req,res)=>{
+   
+  const { username, password } = req.body;
+  try {
+    const existingSuperHero = await SuperHero.findOne({ username, password });
+    // console.log(existingUser);
+    if (existingSuperHero) {
+      // generate token
+      const token = jwt.sign(
+        { userId: existingSuperHero._id },
+        process.env.jwt_secret
+      );
+      res.status(200).json({ existingSuperHero, token });
+    } else {
+      res.status(406).json("Invalid username/ password");
+    }
+  } catch (err) {
+    res.status(401).json(err);
+  }
+}
+
+// get all grievances
 exports.getAllGrievances = async (req, res) => {
   // console.log("inside get all");
   try {
