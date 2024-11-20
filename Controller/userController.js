@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
       res.status(406).json("Invalid email/ password");
     }
   } catch (err) {
-    res.status(401).json(err);
+    res.status(401).json("Network error");
   }
 };
 

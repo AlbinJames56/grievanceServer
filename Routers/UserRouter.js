@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../Controller/userController");
-const jwtMiddleware = require("../Middlewares/jwtMiddlewares");
+const userController = require("../Controller/userController"); 
 const bodyParser = require("body-parser");
 
 // register
