@@ -33,8 +33,10 @@ const grievanceSchema = new mongoose.Schema({
   },
   updatedDate:{
     type:Date,
-    
+  },file:{
+    type:String
   }
+
 });
 const grievance = mongoose.model("grievance", grievanceSchema);
 module.exports = grievance;

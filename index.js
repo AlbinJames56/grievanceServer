@@ -7,8 +7,12 @@ const cors = require("cors");
 const adminRouter = require("./Routers/AdminRouter");
 const userRouter = require("./Routers/UserRouter");
 const grievanceServer = express();
+const bodyParser = require("body-parser");
 
 require("./DB/Connection");
+// Increase the body-parser limit to handle large payloads
+grievanceServer.use(bodyParser.json({ limit: "50mb" }));
+grievanceServer.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 grievanceServer.use(cors()); 
 grievanceServer.use(express.json());

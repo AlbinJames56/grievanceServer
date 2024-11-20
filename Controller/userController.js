@@ -61,6 +61,7 @@ exports.addGrievance = async (req, res) => {
     description,
     status = "Submitted",
     date,
+    file
   } = req.body;
   try {
     const user = await users.findOne({ email });
@@ -73,6 +74,7 @@ exports.addGrievance = async (req, res) => {
         description,
         date,
         status,
+        file
       });
       await newGrievance.save();
      // Notify superheroes in real-time
