@@ -22,6 +22,12 @@ This is the backend server for the Grievance Portal. It handles API requests, ma
 - **FileBase64**: To handle file uploads.
 
 ---
+API Endpoints
+POST /api/grievances: Submit a new grievance.
+GET /api/grievances: Retrieve all grievances.
+POST /api/auth/login: User login.
+POST /api/auth/register: User registration.
+GET /api/superheroes: List all superheroes.
 
 ## Installation and Setup
 1. Clone the repository:
